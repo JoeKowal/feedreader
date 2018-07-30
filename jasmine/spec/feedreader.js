@@ -78,8 +78,12 @@ $(function() {
           */
 
          it('changes visibility', function() {
-            expect(allFeeds).toBeDefined();
-            expect(allFeeds.length).not.toBe(0);
+            const body = document.querySelector('body');
+            const menu = document.querySelector('.menu-icon-link');
+            menu.click(); //simulate the click to expose the menu
+            expect(body.classList.contains('menu-hidden')).toBe(false); //menu no longer hidden
+            menu.click(); //simulate the click to HIDE the menu
+            expect(body.classList.contains('menu-hidden')).toBe(true); //menu now hidden
         });
 
         });
