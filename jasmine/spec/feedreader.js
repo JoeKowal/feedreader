@@ -100,9 +100,14 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
+        //make sure the async feed loading has completed
+         beforeEach(function(done) {
+             loadFeed(0,done);
+         });
+         //check for an entry in the feed container
         it('are loaded', function() {
-            expect(allFeeds).toBeDefined();
-            expect(allFeeds.length).not.toBe(0);
+            const feed = document.querySelector('.feed');
+            expect(feed.children.length > 0).toBe(true);
         });
 
     });
