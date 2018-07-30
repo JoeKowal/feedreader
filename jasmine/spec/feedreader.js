@@ -66,8 +66,8 @@ $(function() {
          */
 
         it('is hidden', function() {
-            expect(allFeeds).toBeDefined();
-            expect(allFeeds.length).not.toBe(0);
+            const body = document.querySelector('body');
+            expect(body.classList.contains('menu-hidden')).toBe(true);
         });
 
 
