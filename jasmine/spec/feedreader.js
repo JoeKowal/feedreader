@@ -47,8 +47,10 @@ $(function() {
          */
 
         it('have valid name', function() {
-            expect(allFeeds).toBeDefined();
-            expect(allFeeds.length).not.toBe(0);
+            for(let feed of allFeeds){
+                expect(feed.name).toBeDefined();
+                expect(feed.name.length).not.toBe(0);
+             }
         });
     });
 
