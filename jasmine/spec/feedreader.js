@@ -116,15 +116,28 @@ $(function() {
     /* TODO: Write a new test suite named "New Feed Selection" */
 
     describe('New Feed Selection', function() {
+        const feed = document.querySelector('.feed'); //to hold feed for async load test
+        const firstFeed = []; //to hold content of feed #1
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        
+
+         //make sure async feed loads is finished
+         beforeEach(function(done) {
+             loadFeed(0);
+             Array.from(feed.children).forEach(function(entry) {
+                 firstFeed.push(entry.innerText);
+             });
+             loadFeed(1,done);
+         });
+
+        //compare the feeds to insure they have changed
         it('content changes', function() {
-            expect(allFeeds).toBeDefined();
-            expect(allFeeds.length).not.toBe(0);
+            Array.from(feed.children).forEach(function(entry,index) {
+                expect(entry.innerText === firstFeed[index]).toBe(false);
+            })
         });
 
 
