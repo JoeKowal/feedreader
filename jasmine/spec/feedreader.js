@@ -34,8 +34,11 @@ $(function() {
          */
 
         it('have valid URL', function() {
-            expect(allFeeds).toBeDefined();
-            expect(allFeeds.length).not.toBe(0);
+            for(let feed of allFeeds){
+                expect(feed.url).toBeDefined();
+                expect(feed.url.length).not.toBe(0);
+             }
+            
         });
 
         /* TODO: Write a test that loops through each feed
